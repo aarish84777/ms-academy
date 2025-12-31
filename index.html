@@ -875,6 +875,57 @@
   .gallery-slider{ height:230px; }
 }
 
+/* HERO GALLERY */
+.hero-gallery{
+  width:100%;
+  height:340px;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid rgba(56,189,248,.5);
+  box-shadow:0 25px 80px rgba(0,0,0,.9);
+  position:relative;
+  background:#020617;
+}
+
+.hero-gallery-track{
+  display:flex;
+  width:400%;
+  height:100%;
+  transition:transform .7s ease-in-out;
+}
+
+.hero-gallery-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(90%);
+}
+
+.hero-gallery-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;
+  border-radius:50px;
+  color:white;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.hero-gallery-btn:hover{ background:black; }
+
+.hero-gallery-btn.left{ left:12px; }
+.hero-gallery-btn.right{ right:12px; }
+
+@media(max-width:860px){
+  .hero-gallery{
+    height:260px;
+    margin-top:10px;
+  }
+}
+
 
   </style>
 </head>
@@ -951,38 +1002,19 @@
         </div>
 
         <div>
-          <div class="hero-right-card">
-            <div class="hero-ribbon">Tier-1 Finish</div>
+<!-- HERO GALLERY -->
+<div class="hero-gallery">
+  <div class="hero-gallery-track">
+    <img src="IMAGE1_URL" class="hero-gallery-img">
+    <img src="IMAGE2_URL" class="hero-gallery-img">
+    <img src="IMAGE3_URL" class="hero-gallery-img">
+    <img src="IMAGE4_URL" class="hero-gallery-img">
+  </div>
 
-            <div class="hero-right-label">Inside MS Academy</div>
-            <div class="hero-right-title">A quiet, serious place to study.</div>
-            <p class="hero-right-text">
-              Students walk into a calm, focused coaching space, away from noise. Smart boards, lab sessions
-              and structured study blocks keep them on track.
-            </p>
+  <button class="hero-gallery-btn left" onclick="heroMove(-1)">❮</button>
+  <button class="hero-gallery-btn right" onclick="heroMove(1)">❯</button>
+</div>
 
-            <div class="hero-stats">
-              <div class="hero-stat">
-                <div class="hero-stat-main">1–12</div>
-                <div class="hero-stat-sub">ICSE & CBSE only</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-main">3</div>
-                <div class="hero-stat-sub">Smart classrooms</div>
-              </div>
-              <div class="hero-stat">
-                <div class="hero-stat-main">Limited</div>
-                <div class="hero-stat-sub">Seats per batch</div>
-              </div>
-            </div>
-
-            <div class="hero-pill-row">
-              <span class="hero-pill">Lab-backed explanations</span>
-              <span class="hero-pill">Disciplined environment</span>
-              <span class="hero-pill">Drawing studio</span>
-              <span class="hero-pill">AI learning support</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -1266,6 +1298,28 @@
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
+<script>
+let heroIndex = 0;
+const heroSlides = document.querySelector(".hero-gallery-track");
+
+function heroNext(){
+  heroIndex++;
+  if(heroIndex > 3) heroIndex = 0;
+  heroSlides.style.transform = `translateX(-${heroIndex * 100}%)`;
+}
+
+setInterval(heroNext, 3000);
+
+function heroMove(d){
+  heroIndex += d;
+  if(heroIndex > 3) heroIndex = 0;
+  if(heroIndex < 0) heroIndex = 3;
+  heroSlides.style.transform = `translateX(-${heroIndex * 100}%)`;
+}
+</script>
+
+
 </body>
 
 <script>
