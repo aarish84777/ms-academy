@@ -824,6 +824,58 @@
         align-items: flex-start;
       }
     }
+
+/* ========= GALLERY STYLES ========= */
+.gallery-slider{
+  position:relative;
+  width:100%;
+  height:350px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(56,189,248,0.5);
+  box-shadow:0 30px 80px rgba(0,0,0,.9);
+  margin-top:20px;
+}
+
+.gallery-track{
+  height:100%;
+  width:400%;
+  display:flex;
+  transition:transform .7s ease-in-out;
+}
+
+.gallery-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(88%);
+}
+
+.gallery-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,.6);
+  border:1px solid rgba(255,255,255,.4);
+  padding:8px 14px;
+  border-radius:50px;
+  color:white;
+  cursor:pointer;
+  font-size:18px;
+}
+
+.gallery-btn:hover{
+  background:black;
+}
+
+.gallery-btn.left{ left:15px; }
+.gallery-btn.right{ right:15px; }
+
+@media(max-width:700px){
+  .gallery-slider{ height:230px; }
+}
+
+
   </style>
 </head>
 <body>
@@ -939,6 +991,29 @@
     <section class="container section" id="why">
       <div class="section-header">
         <div class="section-kicker">Why parents choose ms academy</div>
+        <!-- ================= GALLERY SECTION ================= -->
+<section class="container section">
+  <div class="section-header">
+    <div class="section-kicker">Campus Gallery</div>
+    <h2 class="section-title">A quick look inside MS Academy.</h2>
+    <p class="section-subtitle">
+      Real classrooms. Real labs. Real learning environment.
+    </p>
+  </div>
+
+  <div class="gallery-slider">
+    <div class="gallery-track">
+      <img src="IMAGE1_URL" class="gallery-img">
+      <img src="IMAGE2_URL" class="gallery-img">
+      <img src="IMAGE3_URL" class="gallery-img">
+      <img src="IMAGE4_URL" class="gallery-img">
+    </div>
+
+    <button class="gallery-btn left" onclick="moveSlide(-1)">❮</button>
+    <button class="gallery-btn right" onclick="moveSlide(1)">❯</button>
+  </div>
+</section>
+
         <h2 class="section-title">A serious coaching space with modern tools.</h2>
         <p class="section-subtitle">
           Structured, disciplined and calm, but still friendly enough that students feel safe asking doubts.
@@ -1044,4 +1119,174 @@
         </div>
 
         <div class="level-card">
-          <div class="level-badge">Drawing</d
+          <div class="level-badge">Drawing</div>
+          <div class="level-title">Drawing & Art Program</div>
+          <div class="level-text">
+            Systematic drawing program for technique, creativity and portfolio-style work.
+          </div>
+          <div class="level-note">Goal: A calm creative outlet with real skill-building.</div>
+        </div>
+      </div>
+
+      <div class="levels-cta">
+        <span>Need details for a specific class or subject?</span>
+        <button class="btn-ghost" onclick="window.location.href='https://wa.me/91XXXXXXXXXX'">
+          💬 WhatsApp for Course Details
+        </button>
+      </div>
+    </section>
+
+    <!-- SMART LEARNING & AI ADVANTAGE -->
+    <section class="container section" id="smart">
+      <div class="section-header">
+        <div class="section-kicker">Smart learning & ai advantage</div>
+        <h2 class="section-title">Traditional discipline with modern tools.</h2>
+        <p class="section-subtitle">
+          Labs and AI are not decoration here – they support actual understanding.
+        </p>
+      </div>
+
+      <div class="smart-grid">
+        <!-- LAB / SMART LEARNING -->
+        <div>
+          <div class="lab-card">
+            <div class="lab-tag">On Campus</div>
+            <div class="lab-title">Science & Math Labs</div>
+            <div class="lab-text">
+              Students see experiments, practise numericals and connect formulas with real outcomes
+              instead of just copying diagrams.
+            </div>
+            <div class="lab-grid">
+              <div class="lab-item">Physics & basic experiments</div>
+              <div class="lab-item">Chemistry demonstrations</div>
+              <div class="lab-item">Math practice & drill sheets</div>
+              <div class="lab-item">Visual concept breakdowns</div>
+            </div>
+            <div class="lab-ribbon">Real practice · Not just theory</div>
+          </div>
+
+          <div class="chip-row">
+            <span class="chip">Smart Classrooms</span>
+            <span class="chip">Concept visualisation</span>
+            <span class="chip">Practice-based learning</span>
+            <span class="chip">Quiet, focused space</span>
+          </div>
+        </div>
+
+        <!-- AI ADVANTAGE -->
+        <div>
+          <div class="ai-card">
+            <div class="ai-tag">MS Academy · AI-Powered Support</div>
+            <div class="ai-title">Extra help, powered by AI.</div>
+            <div class="ai-text">
+              MS Academy integrates AI-based tools so students can revise, clarify and strengthen concepts
+              even when they’re not in the classroom.
+            </div>
+            <ul class="ai-list">
+              <li><span class="bullet">●</span><span>Guided explanations for difficult topics.</span></li>
+              <li><span class="bullet">●</span><span>Revision-style support around exams.</span></li>
+              <li><span class="bullet">●</span><span>Encourages students to ask more doubts.</span></li>
+              <li><span class="bullet">●</span><span>Introduces future-ready tools safely.</span></li>
+            </ul>
+            <button class="btn-ai" type="button" onclick="window.location.href='https://clarytiq.com'">
+              🔮 Explore AI Learning
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIMITED SEATS STRIP -->
+      <div class="limited-strip">
+        <div>
+          <div class="limited-main">Admissions Open – Limited Seats per Batch</div>
+          <div class="limited-sub">
+            We intentionally keep batches small so the classroom stays serious, quiet and useful.
+          </div>
+        </div>
+        <div class="limited-side">
+          <div class="limited-chip">New students admitted based on seat availability.</div>
+          <button class="btn btn-primary" onclick="window.location.href='https://wa.me/91XXXXXXXXXX'">
+            ✅ Check Seat Availability
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="container section" id="contact">
+      <div class="section-header">
+        <div class="section-kicker">Contact & admissions</div>
+        <h2 class="section-title">Talk to us about batches, timings and fees.</h2>
+        <p class="section-subtitle">
+          Fees are structured & transparent. Details are shared directly with parents.
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <div>
+          <p class="contact-item">
+            <strong>Address:</strong> MS Academy, Bhatpara (add full address line here)
+          </p>
+          <p class="contact-item">
+            <strong>Phone:</strong> +91-XXXXXXXXXX
+          </p>
+          <p class="contact-item">
+            <strong>WhatsApp:</strong> +91-XXXXXXXXXX
+          </p>
+          <p class="contact-item">
+            <strong>Timings:</strong> Monday – Saturday · 8:00 AM – 8:30 PM
+          </p>
+          <p class="contact-item">
+            <strong>Boards:</strong> ICSE & CBSE · Classes 1–12 · Drawing Program
+          </p>
+
+          <div class="contact-buttons">
+            <button class="btn btn-outline" onclick="window.location.href='tel:+91XXXXXXXXXX'">
+              📞 Call Now
+            </button>
+            <button class="btn btn-primary" onclick="window.location.href='https://wa.me/91XXXXXXXXXX'">
+              💬 WhatsApp for Admission
+            </button>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          Google Map embed / location preview for MS Academy, Bhatpara.<br>
+          (Add official map iframe here when you’re ready.)
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> MS Academy, Bhatpara · All rights reserved.
+  </footer>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelector(".gallery-track");
+
+function showSlide(){
+  slideIndex++;
+  if(slideIndex > 3) slideIndex = 0;
+  slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+
+setInterval(showSlide, 3000);
+
+function moveSlide(dir){
+  slideIndex += dir;
+  if(slideIndex > 3) slideIndex = 0;
+  if(slideIndex < 0) slideIndex = 3;
+  slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+}
+</script>
+
+
+</html>
