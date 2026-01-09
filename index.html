@@ -503,6 +503,47 @@
       font-size: 13px;
     }
 
+    /* HAMBURGER MENU */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(2, 4, 10, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .mobile-menu-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu-overlay a {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
     /* MEDIA QUERIES */
     @media (max-width: 900px) {
 
@@ -511,69 +552,53 @@
       .grid-3,
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
-        /* Reduced gap */
+        gap: 32px;
       }
 
       .hero-text h1 {
-        font-size: 36px;
+        font-size: 42px;
+        margin-bottom: 16px;
       }
 
-      /* Smaller font for mobile */
+      .hero-text p {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
 
       .nav-links {
-        display: flex;
-        /* Show links */
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: rgba(2, 4, 10, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 15px;
-        justify-content: center;
-        border-top: 1px solid var(--border);
-        flex-wrap: wrap;
-        gap: 20px;
-        z-index: 999;
+        display: none;
       }
-
-      .hero {
-        padding-top: 50px;
-        min-height: auto;
-        padding-bottom: 40px;
-      }
-
-      .section {
-        padding: 50px 0;
-      }
-
-      /* Reduced section padding */
-      .section-header {
-        margin-bottom: 30px;
-      }
-
-      /* Reduced header margin */
 
       .nav-btn {
         display: none;
       }
 
-      /* Hide 'Start Learning' on mobile to save space if needed, or keep it */
+      .mobile-menu-btn {
+        display: block;
+      }
 
-      .hero-text p {
-        font-size: 15px;
-        margin-bottom: 25px;
+      .hero {
+        padding-top: 100px;
+        padding-bottom: 60px;
+        min-height: auto;
+        text-align: center;
+      }
+
+      .section {
+        padding: 60px 0;
       }
 
       .hero-actions {
-        flex-direction: column;
+        justify-content: center;
         width: 100%;
       }
 
-      .btn-main {
+      .stat-row {
         justify-content: center;
-        width: 100%;
+      }
+
+      .logo {
+        font-size: 20px;
       }
     }
   </style>
@@ -588,6 +613,8 @@
   <nav class="nav">
     <div class="container nav-inner">
       <a href="#" class="logo">MS ACADEMY</a>
+
+      <!-- Desktop Nav -->
       <div class="nav-links">
         <a href="#home" class="active">Home</a>
         <a href="#courses">Courses</a>
@@ -595,8 +622,21 @@
         <a href="#about">About</a>
       </div>
       <a href="https://wa.me/your-number" class="nav-btn">Start Learning</a>
+
+      <!-- Mobile Nav Button -->
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu-overlay" id="mobileMenu">
+    <a href="#home" onclick="toggleMenu()">Home</a>
+    <a href="#courses" onclick="toggleMenu()">Courses</a>
+    <a href="#tech" onclick="toggleMenu()">Smart Labs</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="https://wa.me/your-number" class="nav-btn" style="display:inline-block; margin-top: 20px;">Start
+      Learning</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -749,6 +789,13 @@
         nav.classList.remove('scrolled');
       }
     });
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('.mobile-menu-btn');
+      menu.classList.toggle('active');
+      btn.innerHTML = menu.classList.contains('active') ? '✕' : '☰';
+    }
   </script>
 </body>
 
