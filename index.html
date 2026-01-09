@@ -556,19 +556,26 @@
 
       .nav-links {
         display: flex;
-        gap: 24px;
+        gap: 16px 20px;
+        /* Row Gap / Column Gap */
         width: 100%;
         justify-content: center;
-        padding-top: 4px;
+        flex-wrap: wrap;
+        /* Allow wrapping if needed */
+        padding: 4px 16px;
+        /* Add side padding so it doesn't touch edges */
         background: transparent;
         backdrop-filter: none;
-        padding: 0;
         position: static;
         border: none;
+        max-width: 360px;
+        /* Prevent spanning fully on wide mobile */
+        margin: 0 auto;
       }
 
       .nav-links a {
-        font-size: 12px;
+        font-size: 11px;
+        /* Slightly smaller to fit better */
         color: var(--text-muted);
         font-weight: 500;
         text-transform: uppercase;
@@ -607,7 +614,8 @@
         padding-top: 140px;
         padding-bottom: 80px;
         min-height: auto;
-        text-align: right;
+        text-align: left;
+        /* Revert to Left */
       }
 
       .section {
@@ -633,14 +641,17 @@
         font-size: 16px;
         line-height: 1.6;
         margin-bottom: 32px;
-        padding: 0 10px;
+        padding: 0;
+        /* Remove side padding */
         color: #cbd5e1;
-        margin-left: auto;
+        margin-left: 0;
+        /* Reset margins */
         margin-right: 0;
       }
 
       .hero-actions {
-        justify-content: flex-end;
+        justify-content: flex-start;
+        /* Revert to Left */
         width: 100%;
         flex-direction: column;
         gap: 16px;
