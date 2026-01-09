@@ -509,6 +509,48 @@
       }
     }
 
+    /* DYNAMIC TYPEWRITER */
+    .dynamic-wrapper {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 500px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 27px;
+      /* Prevent jitter */
+    }
+
+    .static-prefix {
+      color: var(--text-muted);
+    }
+
+    .typewriter-text {
+      color: var(--neon-cyan);
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      background-color: var(--neon-cyan);
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
     .sub-headline {
       font-size: 48px;
       line-height: 1.1;
@@ -699,8 +741,11 @@
       <div class="hero-text">
         <h1>MS Academy</h1>
         <h2 class="sub-headline">Learn today, Lead Tomorrow</h2>
-        <p class="fade-up" style="animation-delay: 0.1s;">Premium ICSE & CBSE coaching for Classes 1–12. Experience
-          smart classrooms, personalized AI support, and a curriculum designed for the future.</p>
+        <div class="dynamic-wrapper fade-up" style="animation-delay: 0.1s;">
+          <span class="static-prefix">Includes: </span>
+          <span class="typewriter-text" id="typing-text"></span><span class="cursor">|</span>
+        </div>
+
         <div class="hero-actions fade-up" style="animation-delay: 0.2s;">
           <button class="btn-main btn-primary">Contact Us<span>→</span></button>
           <a href="https://clarytiq.com" class="btn-main btn-glass">Try Our AI</a>
@@ -810,7 +855,7 @@
           <h4>Navigation</h4>
           <a href="#">Home</a>
           <a href="#">Courses</a>
-          <a href="#">About A</a>
+          <a href="#">About</a>
           <a href="#">Contact</a>
         </div>
 
@@ -823,8 +868,8 @@
 
         <div class="footer-col">
           <h4>Contact</h4>
-          <a href="#">+91 90000 00000</a>
-          <a href="#">info@msacademy.com</a>
+          <a href="#">+91 86172 58589</a>
+          <a href="#">sharmin.mehnaaz1998@gmail.com</a>
           <a href="#">Bhatpara, West Bengal</a>
         </div>
       </div>
@@ -844,6 +889,41 @@
         nav.classList.remove('scrolled');
       }
     });
+
+    // Dynamic Typing Effect
+    const texts = ["Digital Coaching Classes", "Printed Notes", "Science Lab", "Expert Faculty"];
+    let count = 0;
+    let index = 0;
+    let currentText = "";
+    let letter = "";
+    let isDeleting = false;
+
+    (function type() {
+      if (count === texts.length) { count = 0; }
+      currentText = texts[count];
+
+      if (isDeleting) {
+        letter = currentText.slice(0, --index);
+      } else {
+        letter = currentText.slice(0, ++index);
+      }
+
+      document.getElementById("typing-text").textContent = letter;
+
+      let typeSpeed = 100;
+      if (isDeleting) { typeSpeed /= 2; }
+
+      if (!isDeleting && letter.length === currentText.length) {
+        typeSpeed = 2000; // Pause at end
+        isDeleting = true;
+      } else if (isDeleting && letter.length === 0) {
+        isDeleting = false;
+        count++;
+        typeSpeed = 500; // Pause before next word
+      }
+
+      setTimeout(type, typeSpeed);
+    })();
   </script>
 </body>
 
