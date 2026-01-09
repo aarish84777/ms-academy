@@ -511,17 +511,70 @@
       .grid-3,
       .footer-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+        /* Reduced gap */
       }
 
       .hero-text h1 {
-        font-size: 42px;
+        font-size: 36px;
       }
 
+      /* Smaller font for mobile */
+
       .nav-links {
+        display: flex;
+        /* Show links */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(2, 4, 10, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 15px;
+        justify-content: center;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+        gap: 20px;
+        z-index: 999;
+      }
+
+      .hero {
+        padding-top: 50px;
+        min-height: auto;
+        padding-bottom: 40px;
+      }
+
+      .section {
+        padding: 50px 0;
+      }
+
+      /* Reduced section padding */
+      .section-header {
+        margin-bottom: 30px;
+      }
+
+      /* Reduced header margin */
+
+      .nav-btn {
         display: none;
       }
 
-      /* Simplified for mobile */
+      /* Hide 'Start Learning' on mobile to save space if needed, or keep it */
+
+      .hero-text p {
+        font-size: 15px;
+        margin-bottom: 25px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-main {
+        justify-content: center;
+        width: 100%;
+      }
     }
   </style>
 </head>
